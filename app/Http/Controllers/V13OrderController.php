@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\V13Order;
+use App\V13Type;
 use Illuminate\Http\Request;
 
 class V13OrderController extends Controller
@@ -25,7 +26,8 @@ class V13OrderController extends Controller
      */
     public function create()
     {
-        //
+        $types = V13Type::orderBy('sort_order', 'asc')->get();
+        return view('orders.create', compact('types'));
     }
 
     /**
