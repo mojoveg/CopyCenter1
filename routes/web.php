@@ -41,6 +41,10 @@ Route::get('/1test', function () {
     return view('1test');
 });
 
+Route::get('/test', function () {
+    return view('test');
+});
+
 Route::get('/about', function () {
     return view('about', [
         'articles' => App\Article::take(3)->latest()->get()
@@ -64,7 +68,8 @@ Route::get('test', 'WebsiteController@test')->name('test');
 //     Route::resource('users','UserController');
 // });
 
-Route::resource('orders', 'OrderController');
+// Route::resource('orders', 'OrderController');
+Route::resource('orders', 'V13OrderController');
 
 // Route::prefix('5 blade component bulma')->group(function () {
 //     Route::resource('orders','OrderController');
@@ -75,3 +80,12 @@ Route::resource('contacts', 'ContactController');
 Route::resource('templates', 'TemplateController');
 
 
+Route::get('/foo', function()
+{
+    $exitCode = Artisan::call('make:model V13Order -mcr');
+    $exitCode = Artisan::call('make:model V13Type -mcr');
+    $exitCode = Artisan::call('make:model V13Option -mcr');
+    $exitCode = Artisan::call('make:model V13OrderOption -m');
+    $exitCode = Artisan::call('make:seeder V13TypesTableSeeder');
+    $exitCode = Artisan::call('make:seeder V13OptionsTableSeeder');
+});

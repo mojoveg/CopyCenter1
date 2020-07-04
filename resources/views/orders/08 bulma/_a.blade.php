@@ -7,9 +7,6 @@
 @section('main')
 
   {{-- Content --}}
-  {{-- <h1>hello</h1> --}}
-  @livewire('order-create-form')
-
 
 @endsection
 

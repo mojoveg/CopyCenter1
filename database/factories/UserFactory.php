@@ -7,6 +7,7 @@ use App\Customer;
 use App\Order;
 use App\LocationOption;
 use App\OrderOption;
+use App\V13Order;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -41,6 +42,17 @@ $factory->define(Customer::class, function (Faker $faker) {
 });
 
 $factory->define(Order::class, function (Faker $faker) {
+    return [
+        // 'customer_id' => rand(1,5),
+        // 'numOfOriginals' => $faker->randomDigitNotNull,
+        // 'numOfCopies' => $faker->randomDigitNotNull,
+        'customer_name' => $faker->name,
+        'number_of_copies' => $faker->randomDigitNotNull,
+        'payment' => $faker->word,
+    ];
+});
+
+$factory->define(V13Order::class, function (Faker $faker) {
     return [
         // 'customer_id' => rand(1,5),
         // 'numOfOriginals' => $faker->randomDigitNotNull,
